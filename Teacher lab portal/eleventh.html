@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Session</title>
+    <link rel="stylesheet" href="twelve.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <button class="nav-button" id="backButton">⬅</button>
+            <h1>Grade 1 | Foundation | Session 1: Meet the Children | Practice Session CBT</h1>
+            <div class="profile">K</div>
+        </header>
+
+        <!-- Content Section -->
+        <main>
+            <div class="question">
+                <p>name the children who are singing. Type your answer in the blank.</p>
+            </div>
+            <div class="image-container">
+                <img src="EEL app screens/Page 11/4x/4x/Image for page 11@4x.png" alt="Children Singing">
+                <button class="play-button" id="playPauseButton">▶</button>
+            </div>
+            <form>
+                <input type="text" placeholder="Type your answer here..." />
+                <button type="submit">Submit</button>
+            </form>
+        </main>
+
+        <!-- Footer Section -->
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="backgroundMusic" src="Phonics Song with TWO Words - A For Apple - ABC Alphabet Songs with Sounds for Children.mp3"></audio>
+
+    <!-- JavaScript -->
+    <script>
+        // Get references to the play/pause button and the audio element
+        const playPauseButton = document.getElementById('playPauseButton');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+
+        // Add a click event listener to the play/pause button
+        playPauseButton.addEventListener('click', function() {
+            // Check if the music is currently paused
+            if (backgroundMusic.paused) {
+                // If paused, play the music and change the button text to pause icon
+                backgroundMusic.play();
+                playPauseButton.textContent = '⏸';
+            } else {
+                // If playing, pause the music and change the button text to play icon
+                backgroundMusic.pause();
+                playPauseButton.textContent = '▶';
+            }
+        });
+
+        // Optional: Reset the button text to play icon when audio ends
+        backgroundMusic.addEventListener('ended', function() {
+            playPauseButton.textContent = '▶';
+        });
+
+        // Add a click event listener to the back button
+        const backButton = document.getElementById('backButton');
+        backButton.addEventListener('click', function() {
+            window.history.back();
+        });
+
+        // Redirect to 'tenth.html' when the page is clicked
+        document.body.addEventListener('click', function(event) {
+            // Prevent default behavior for specific buttons
+            if (event.target.classList.contains('nav-button') || 
+                event.target.classList.contains('play-button') ||
+                event.target.tagName === 'FORM' || 
+                event.target.tagName === 'INPUT' || 
+                event.target.tagName === 'BUTTON') {
+                return;
+            }
+            window.location.href = 'tenth.html';
+        });
+
+    </script>
+</body>
+</html>
